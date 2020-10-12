@@ -7,22 +7,19 @@ import MenuLink from "./components/MenuLink/menuLink";
 import AboutPage from "./components/Pages/AboutPage/aboutPage";
 import MainPage from "./components/Pages/MainPage/mainPage";
 import ProductPage from "./components/Pages/ProductPage/productPage";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
   render() {
     return (
-      <>
+      <Router>
         <Header>
-          <MenuLink name="Main" />
-          <MenuLink name="Products" />
-          <MenuLink name="About" />
+          <MenuLink link="/" name="Main" />
+          <MenuLink link="/products" name="Products" />
+          <MenuLink link="/about" name="About" />
         </Header>
-        <Body>
-          <MainPage />
-          <ProductPage />
-          <AboutPage />
-        </Body>
-      </>
+        <Body />
+      </Router>
     );
   }
 }
