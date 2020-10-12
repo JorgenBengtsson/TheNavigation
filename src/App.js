@@ -9,18 +9,24 @@ import MainPage from "./components/Pages/MainPage/mainPage";
 import ProductPage from "./components/Pages/ProductPage/productPage";
 
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = { menuItemSelected: "" };
+  }
   render() {
     return (
       <>
-        <Header>
+        <Header
+          onClick={(menuName) => this.setState({ menuItemSelected: menuName })}
+        >
           <MenuLink name="Main" />
           <MenuLink name="Products" />
           <MenuLink name="About" />
         </Header>
-        <Body>
-          <MainPage />
-          <ProductPage />
-          <AboutPage />
+        <Body pageToShow={this.state.menuItemSelected}>
+          <MainPage name="Main" />
+          <ProductPage name="Products" />
+          <AboutPage name="About" />
         </Body>
       </>
     );
